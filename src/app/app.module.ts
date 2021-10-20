@@ -10,7 +10,8 @@ import { FrontPageHeaderComponent } from './front-page-header/front-page-header.
 import { PresentfeatureComponentComponent } from './presentfeature-component/presentfeature-component.component';
 import { TutorialVideoComponent } from './tutorial-video/tutorial-video.component';
 import { DataanalyticsComponent } from './dataanalytics/dataanalytics.component';
-import { UploadDataComponent } from './upload-data/upload-data.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,13 +21,14 @@ import { UploadDataComponent } from './upload-data/upload-data.component';
     PresentfeatureComponentComponent,
     TutorialVideoComponent,
     DataanalyticsComponent,
-    UploadDataComponent
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

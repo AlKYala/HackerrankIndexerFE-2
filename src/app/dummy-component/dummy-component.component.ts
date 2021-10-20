@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ChartType} from "chart.js";
 import {Label, MultiDataSet} from "ng2-charts";
-import {NodeLoaderUtil} from "../shared/Utils/NodeLoaderUtil";
+import {NodeLoaderUtil} from "../../shared/Utils/NodeLoaderUtil";
 
 @Component({
   selector: 'app-dummy-component',
@@ -16,15 +16,9 @@ export class DummyComponentComponent implements OnInit {
   ];
   public doughnutChartType: ChartType = 'doughnut';
 
-  private jsFiles: string[] = ["/assets/js/chart.min.js", "/assets/bootstrap/js/bootstrap.min.js","/assets/js/bs-init.js"];
-  private cssFiles: string[] = ["/assets/bootstrap/css/bootstrap.min.css", "/assets/fonts/fontawesome-all.min.css",
-    "/assets/css/Highlight-Clean.css", "/assets/css/styles.css"];
-
   constructor() { }
 
   ngOnInit(): void {
-    NodeLoaderUtil.loadJSFiles(this.jsFiles, document);
-    NodeLoaderUtil.loadCSSFiles(this.cssFiles, document);
   }
 
   public loadJsFile(url: string) {
