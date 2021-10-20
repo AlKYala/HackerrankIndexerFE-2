@@ -28,7 +28,6 @@ export class ChartComponent implements OnInit, AfterViewInit {
               private analyticsService: AnalyticsService) { }
 
   ngOnInit(): void {
-
   }
 
   private initData(): void {
