@@ -12,6 +12,10 @@ import { TutorialVideoComponent } from './tutorial-video/tutorial-video.componen
 import { DataanalyticsComponent } from './dataanalytics/dataanalytics.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {HttpClientModule} from "@angular/common/http";
+import { GeneralstatsComponent } from './generalstats/generalstats.component';
+import { ChartComponent } from './chart/chart.component';
+import { LanguagepercentagesComponent } from './languagepercentages/languagepercentages.component';
+import { SubmissionlistComponent } from './submissionlist/submissionlist.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import {HttpClientModule} from "@angular/common/http";
     PresentfeatureComponentComponent,
     TutorialVideoComponent,
     DataanalyticsComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    GeneralstatsComponent,
+    ChartComponent,
+    LanguagepercentagesComponent,
+    SubmissionlistComponent
   ],
   imports: [
     BrowserModule,
