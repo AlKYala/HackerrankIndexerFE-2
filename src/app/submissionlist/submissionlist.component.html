@@ -68,6 +68,6 @@
       </div>
     </div>
   </ng-container>
-    <jw-pagination class="paginator" [items]="this.submissions" (changePage)="onChangePage($event)"></jw-pagination>
+    <jw-pagination class="paginator" [items]="this.submissions" [maxPages]="5" (changePage)="onChangePage($event)"></jw-pagination>
   </div>
 </div>

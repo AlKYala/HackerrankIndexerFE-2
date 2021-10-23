@@ -36,9 +36,9 @@ export class SubmissionlistComponent implements OnInit {
 
   pageOfItems!: Array<any>;
   pageSize = 3;
-  pager: any = {};
   changePage = new EventEmitter<any>(true);
   maxPages = 3;
+  pager: any = paginate(this.submissions.length, 1, this.pageSize, this.maxPages);
   //TODO: Page settings dont work
 
   constructor(private httpClient: HttpClient,
@@ -143,12 +143,14 @@ export class SubmissionlistComponent implements OnInit {
 
   onChangePage(pageOfitems: Array<any>) {
     this.pageOfItems = pageOfitems;
+    console.log(this.pager);
   }
 
   private setPage(page: number) {
     this.pager = paginate(this.submissions.length, page, this.pageSize, this.maxPages);
+    //debug
+    console.log(this.pager);
     var pageOfItems = this.submissions.slice(this.pager.startIndex, this.pager.endIndex +1);
     this.changePage.emit(pageOfItems);
   }
-
 }
