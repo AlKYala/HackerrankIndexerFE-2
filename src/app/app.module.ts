@@ -16,6 +16,7 @@ import { GeneralstatsComponent } from './generalstats/generalstats.component';
 import { ChartComponent } from './chart/chart.component';
 import { LanguagepercentagesComponent } from './languagepercentages/languagepercentages.component';
 import { SubmissionlistComponent } from './submissionlist/submissionlist.component';
+import {JwPaginationModule} from "jw-angular-pagination";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SubmissionlistComponent } from './submissionlist/submissionlist.compone
     RouterModule,
     AppRoutingModule,
     ChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    JwPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

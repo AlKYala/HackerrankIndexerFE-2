@@ -35,10 +35,11 @@ export class SubmissionlistComponent implements OnInit {
   //pageLimit: number = 16;
 
   pageOfItems!: Array<any>;
-  pageSize = 5;
+  pageSize = 3;
   pager: any = {};
   changePage = new EventEmitter<any>(true);
-  maxPages = 5;
+  maxPages = 3;
+  //TODO: Page settings dont work
 
   constructor(private httpClient: HttpClient,
               private submissionService: SubmissionService,
