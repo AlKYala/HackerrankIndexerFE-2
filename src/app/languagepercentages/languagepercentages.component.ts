@@ -24,7 +24,6 @@ export class LanguagepercentagesComponent implements OnInit, AfterViewInit, OnDe
               private pLanguageService: PLanguageService) { }
 
   ngOnInit(): void {
-
   }
 
   ngAfterViewInit(): void {
@@ -43,8 +42,8 @@ export class LanguagepercentagesComponent implements OnInit, AfterViewInit, OnDe
         return this.analyticsService.getPassPercentagesOfPLanguages();
       })).subscribe((data: PassPercentages) => {
         this.initPassPercentages(data);
-        this.visualizePassPercentages();
         this.loaded = true;
+        this.visualizePassPercentages();
       });
     this.subscriptions.push(subscription);
   }
@@ -57,7 +56,7 @@ export class LanguagepercentagesComponent implements OnInit, AfterViewInit, OnDe
         const percentage = this.pLanguagePassPercentageMap.get(language.id!);
         console.log(`${language.language} ${language.color}`);
         console.log(percentage);
-        document.getElementById(`${language.language.concat('percentageId')}`)!.style.width = `${percentage!}%`;
+        document.getElementById(`${language.language.concat('percentageId')}`)!.style.width = `${percentage}%`;
         document.getElementById(`${language.language.concat('percentageId')}`)!.style.backgroundColor = `${language.color}`;
       }
     }

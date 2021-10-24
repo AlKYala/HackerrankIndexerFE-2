@@ -3,6 +3,7 @@ import {SubscriptionService} from "../../shared/services/SubscriptionService";
 import {AnalyticsService} from "../../shared/services/AnalyticsService";
 import {HackerrrankJSONService} from "../../shared/datamodels/HackerrankJSON/service/HackerrrankJSONService";
 import {Subscription} from "rxjs";
+import {GlobalVariables} from "../../shared/GlobalVariables";
 
 @Component({
   selector: 'app-dataanalytics',
@@ -38,6 +39,7 @@ export class DataanalyticsComponent implements OnInit {
 
   public fireUpload(): void {
     this.submitted = true;
+    GlobalVariables.isUploaded = true;
     this.fireParseRequest(this.file);
   }
 
