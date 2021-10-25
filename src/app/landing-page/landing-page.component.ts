@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NodeLoaderUtil} from "../../shared/Utils/NodeLoaderUtil";
-
+import {GlobalVariables} from "../../shared/GlobalVariables";
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -14,4 +14,7 @@ export class LandingPageComponent implements OnInit {
 
   }
 
+  get isUploaded(): boolean {
+    return GlobalVariables.isUploaded;
+  }
 }

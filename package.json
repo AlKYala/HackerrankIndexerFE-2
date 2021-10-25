@@ -21,7 +21,9 @@
     "chart.js": "^2.9.3",
     "jw-angular-pagination": "^1.2.0",
     "jw-paginate": "^1.0.4",
+    "mfb": "^0.12.0",
     "ng2-charts": "^2.2.3",
+    "ngx-float-button": "^1.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

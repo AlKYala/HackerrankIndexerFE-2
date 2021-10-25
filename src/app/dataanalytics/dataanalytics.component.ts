@@ -17,6 +17,7 @@ export class DataanalyticsComponent implements OnInit {
   wait: boolean = true; //wait for the data to load
   submitted: boolean = false;
   file!: File;
+  private numberOfTabs: number = 4;
 
   constructor(private subscriptionService: SubscriptionService,
               private analyticsService: AnalyticsService,
@@ -39,7 +40,7 @@ export class DataanalyticsComponent implements OnInit {
 
   public fireUpload(): void {
     this.submitted = true;
-    GlobalVariables.isUploaded = true;
+
     this.fireParseRequest(this.file);
   }
 
@@ -47,6 +48,7 @@ export class DataanalyticsComponent implements OnInit {
     this.wait = true;
     const subscription: Subscription = this.hackerrankJsonService.fireHackerrankParsing(hackerrankJsonFile).pipe().subscribe((response: string) => {
       this.datafound = true;
+      GlobalVariables.isUploaded = true;
       this.wait = false;
     });
     this.subscriptions.push(subscription);
@@ -61,5 +63,18 @@ export class DataanalyticsComponent implements OnInit {
         console.log(this.datafound);
       })
     this.subscriptions.push(subscription);
+  }
+
+  public activateTab(id: number): void {
+    for(let i = 0; i < this.numberOfTabs; i++) {
+      // @ts-ignore
+      document.getElementById(`tab-${i}`).className = "tab-pane";
+      // @ts-ignore
+      document.getElementById(`tab-header-${i}`).className = "nav-link";
+    }
+    // @ts-ignore
+    document.getElementById(`tab-${id}`).className = "tab-pane active";
+    // @ts-ignore
+    document.getElementById(`tab-header-${id}`).className = "nav-link active";
   }
 }
