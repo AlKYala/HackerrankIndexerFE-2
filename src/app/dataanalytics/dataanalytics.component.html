@@ -80,7 +80,17 @@
 
         <div class="tab-content">
           <div class="tab-pane active" role="tabpanel" [attr.id]="'tab-0'">
-            <p>Content for tab 0.</p>
+            <!-- upload stuff -->
+            <div class="col-md-12">
+              <h4 class="d-xxl-flex justify-content-xxl-center">Upload your .json from Hackerrank below.&nbsp;<a href="#">Need
+                help?
+                Here's how to</a></h4>
+            </div>
+            <div class="row">
+              <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-start">
+                <input (change)="onChange($event)" class="d-xxl-flex justify-content-xxl-center" type="file">
+              </div>
+            </div>
           </div>
           <div class="tab-pane" role="tabpanel" [attr.id]="'tab-1'">
             <p>Content for tab 1.</p>

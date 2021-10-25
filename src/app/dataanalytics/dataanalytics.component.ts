@@ -26,6 +26,7 @@ export class DataanalyticsComponent implements OnInit {
   ngOnInit(): void {
     this.subscriptions = [];
     this.checkIsUploadedAlready();
+    this.loadView();
   }
 
   ngOnDestroy(): void {
@@ -63,6 +64,41 @@ export class DataanalyticsComponent implements OnInit {
         console.log(this.datafound);
       })
     this.subscriptions.push(subscription);
+  }
+
+  private loadView() {
+    if(!GlobalVariables.isUploaded) {
+      this.disableDataTabs();
+      return;
+    }
+    this.enableDataTabs();
+    this.loadAnalyticsDataTab();
+  }
+
+  //method to disable
+  public disableDataTabs(): void {
+    for(let i = 0; i < this.numberOfTabs; i++) {
+      // @ts-ignore
+      document.getElementById(`tab-header-${i}`).className = "nav-link disabled";
+    }
+    // @ts-ignore
+    document.getElementById(`tab-0`).className = "tab-pane active";
+    // @ts-ignore
+    document.getElementById(`tab-header-0`).className = "nav-link active";
+  }
+
+  public enableDataTabs(): void {
+    for(let i = 0; i < this.numberOfTabs; i++) {
+      // @ts-ignore
+      document.getElementById(`tab-header-${i}`).className = "nav-link";
+    }
+  }
+
+  private loadAnalyticsDataTab(): void {
+    // @ts-ignore
+    document.getElementById(`tab-2`).className = "tab-pane active";
+    // @ts-ignore
+    document.getElementById(`tab-header-2`).className = "nav-link active";
   }
 
   public activateTab(id: number): void {
