@@ -17,6 +17,7 @@ import { ChartComponent } from './chart/chart.component';
 import { LanguagepercentagesComponent } from './languagepercentages/languagepercentages.component';
 import { SubmissionlistComponent } from './submissionlist/submissionlist.component';
 import {JwPaginationModule} from "jw-angular-pagination";
+import {AnalyticsInsightComponent} from "./analytics-insight/analytics-insight.component";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {JwPaginationModule} from "jw-angular-pagination";
     GeneralstatsComponent,
     ChartComponent,
     LanguagepercentagesComponent,
-    SubmissionlistComponent
+    SubmissionlistComponent,
+    AnalyticsInsightComponent
   ],
   imports: [
     BrowserModule,
