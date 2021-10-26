@@ -15,9 +15,11 @@ export class DataanalyticsComponent implements OnInit {
 
   datafound: boolean = false; //
   wait: boolean = true; //wait for the data to load
-  submitted: boolean = false;
+  submitted: boolean = false; //unused - used in old form!
+  loading: boolean = false;
   file!: File;
   private numberOfTabs: number = 4;
+  selectedTab = 1;
 
   constructor(private subscriptionService: SubscriptionService,
               private analyticsService: AnalyticsService,
@@ -40,7 +42,7 @@ export class DataanalyticsComponent implements OnInit {
 
   public fireUpload(): void {
     this.submitted = true;
-
+    this.loading = true;
     this.fireParseRequest(this.file);
   }
 
@@ -50,6 +52,9 @@ export class DataanalyticsComponent implements OnInit {
       this.datafound = true;
       GlobalVariables.isUploaded = true;
       this.wait = false;
+      this.loading = false;
+      this.enableDataTabs();
+      this.loadAnalyticsDataTab();
     });
     this.subscriptions.push(subscription);
   }
@@ -77,14 +82,11 @@ export class DataanalyticsComponent implements OnInit {
 
   //method to disable
   public disableDataTabs(): void {
+    this.activateTab(0);
     for(let i = 0; i < this.numberOfTabs; i++) {
       // @ts-ignore
       document.getElementById(`tab-header-${i}`).className = "nav-link disabled";
     }
-    // @ts-ignore
-    document.getElementById(`tab-0`).className = "tab-pane active";
-    // @ts-ignore
-    document.getElementById(`tab-header-0`).className = "nav-link active";
   }
 
   public enableDataTabs(): void {
@@ -95,10 +97,7 @@ export class DataanalyticsComponent implements OnInit {
   }
 
   private loadAnalyticsDataTab(): void {
-    // @ts-ignore
-    document.getElementById(`tab-2`).className = "tab-pane active";
-    // @ts-ignore
-    document.getElementById(`tab-header-2`).className = "nav-link active";
+    this.activateTab(1);
   }
 
   public activateTab(id: number): void {
@@ -108,6 +107,7 @@ export class DataanalyticsComponent implements OnInit {
       // @ts-ignore
       document.getElementById(`tab-header-${i}`).className = "nav-link";
     }
+    this.selectedTab = id;
     // @ts-ignore
     document.getElementById(`tab-${id}`).className = "tab-pane active";
     // @ts-ignore

@@ -81,17 +81,27 @@
         <div class="tab-content">
           <div class="tab-pane active" role="tabpanel" [attr.id]="'tab-0'">
             <!-- upload stuff -->
-            <div class="col-md-12">
-              <h4 class="d-xxl-flex justify-content-xxl-center">Upload your .json from Hackerrank below.&nbsp;<a href="#">Need
-                help?
-                Here's how to</a></h4>
+            <ng-container *ngIf="!loading; else submit">
+                <div class="col-md-12">
+                  <h4 class="d-xxl-flex justify-content-xxl-center">Upload your .json from Hackerrank below.&nbsp;<a href="#">Need
+                    help?
+                    Here's how to</a></h4>
+                </div>
+                <div class="row">
+                  <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-start">
+                    <input (change)="onChange($event)" class="d-xxl-flex justify-content-xxl-center" type="file">
+                  </div>
+                </div>
+            </ng-container>
+          <ng-template #submit>
+            <div class="col-md-12 d-flex d-xxl-flex justify-content-center"><span class="spinner-border" role="status"></span></div>
+            <div class="col d-inline-flex d-xxl-flex justify-content-center">
+              <header></header>
+              <p class="text-center d-inline-flex d-xxl-flex align-items-xxl-center" style="margin-bottom: 0px;margin-top: 16px;">Loading....</p>
+              <header></header>
             </div>
-            <div class="row">
-              <div class="col d-xxl-flex justify-content-xxl-center align-items-xxl-start">
-                <input (change)="onChange($event)" class="d-xxl-flex justify-content-xxl-center" type="file">
-              </div>
-            </div>
-          </div>
+          </ng-template>
+        </div>
           <div class="tab-pane" role="tabpanel" [attr.id]="'tab-1'">
             <p>Content for tab 1.</p>
             <h4>General Stats</h4>
