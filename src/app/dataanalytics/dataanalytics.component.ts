@@ -26,7 +26,6 @@ export class DataanalyticsComponent implements OnInit {
   ngOnInit(): void {
     this.subscriptions = [];
     this.checkIsUploadedAlready();
-    this.loadView();
   }
 
   ngOnDestroy(): void {
@@ -59,15 +58,16 @@ export class DataanalyticsComponent implements OnInit {
     const subscription: Subscription = this.analyticsService.checkUploadsExist()
       .pipe().subscribe((data: boolean) => {
         this.datafound = data;
+        this.loadView(data);
         this.wait = false;
-        console.log(this.wait);
-        console.log(this.datafound);
+        console.log(data);
       })
     this.subscriptions.push(subscription);
   }
 
-  private loadView() {
-    if(!GlobalVariables.isUploaded) {
+  private loadView(isUploaded: boolean) {
+    if(!isUploaded) {
+      console.log("no")
       this.disableDataTabs();
       return;
     }
