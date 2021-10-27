@@ -21,6 +21,7 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
     []
   ];
   public doughnutChartType: ChartType = 'doughnut';
+  //TODO better handling for loaded!
   public loaded: boolean = false;
   private subscriptions: Subscription[] = [];
   private pLanguages: Planguage[] = [];

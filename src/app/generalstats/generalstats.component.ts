@@ -18,6 +18,8 @@ export class GeneralstatsComponent implements OnInit, AfterViewInit {
 
   favouriteLanguage: string = "";
 
+  loaded: boolean = false;
+
   constructor(private analyticsService: AnalyticsService) { }
 
   ngOnInit(): void {
@@ -25,13 +27,23 @@ export class GeneralstatsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.initData();
+    this.checkUploadsExist();
   }
 
   private initData() {
     this.initChallengesPercentage();
     this.initSubmissionsPercentage();
     this.initFavouriteLanguage();
+  }
+
+  private checkUploadsExist(): void {
+    //TODO verschachtelung aufheben
+    this.analyticsService.checkUploadsExist().pipe().subscribe((data: boolean) => {
+      this.loaded = data;
+      if(this.loaded) {
+        this.initData();
+      }
+    });
   }
 
   private initSubmissionsPercentage(): void {
