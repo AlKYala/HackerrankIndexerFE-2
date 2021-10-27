@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AnalyticsService} from "../../shared/services/AnalyticsService";
 import {Subscription} from "rxjs";
 import {Planguage} from "../../shared/datamodels/PLanguage/model/PLanguage";
@@ -8,7 +8,7 @@ import {Planguage} from "../../shared/datamodels/PLanguage/model/PLanguage";
   templateUrl: './generalstats.component.html',
   styleUrls: ['./generalstats.component.css']
 })
-export class GeneralstatsComponent implements OnInit {
+export class GeneralstatsComponent implements OnInit, AfterViewInit {
 
   private subscriptions!: Subscription[];
 
@@ -22,6 +22,9 @@ export class GeneralstatsComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscriptions = [];
+  }
+
+  ngAfterViewInit() {
     this.initData();
   }
 
@@ -35,6 +38,8 @@ export class GeneralstatsComponent implements OnInit {
     const subscription: Subscription = this.analyticsService.getPercentagePassedSubmissions()
       .pipe().subscribe((data: number) => {
         this.percentageSubmissionsPassed = Math.round(data*100);
+        console.log(data);
+        console.log(this.percentageSubmissionsPassed);
         this.visualizePassedSubmissions();
       })
     this.subscriptions.push(subscription);
@@ -45,6 +50,7 @@ export class GeneralstatsComponent implements OnInit {
       .pipe().subscribe((data: number) => {
         //debug
         this.percentageChallengesPassed = Math.round(data*100);
+        console.log(this.percentageChallengesPassed);
         this.visualizePassedChallenges();
       });
     this.subscriptions.push(subscription);
@@ -54,6 +60,7 @@ export class GeneralstatsComponent implements OnInit {
   private initFavouriteLanguage() {
     const subscription = this.analyticsService.getFavouritePLanguage().pipe().subscribe((data: Planguage) => {
       this.favouriteLanguage = data.language;
+      console.log(this.favouriteLanguage);
     });
     this.subscriptions.push(subscription);
   }

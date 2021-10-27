@@ -36,6 +36,10 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void {
+    this.initData();
+  }
+
   private initData(): void {
     const subscription: Subscription = this.pLanguageService
       .findAll()
@@ -55,9 +59,5 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
       this.doughnutChartLabels.push(statistics.planguages[i].language);
       this.doughnutChartData[0].push(statistics.numberSubmissions[i]);
     }
-  }
-
-  ngAfterViewInit(): void {
-    this.initData();
   }
 }

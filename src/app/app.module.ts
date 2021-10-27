@@ -36,8 +36,8 @@ import {AnalyticsInsightComponent} from "./analytics-insight/analytics-insight.c
   ],
   imports: [
     BrowserModule,
-    RouterModule,
     AppRoutingModule,
+    RouterModule,
     ChartsModule,
     HttpClientModule,
     JwPaginationModule
