@@ -14,30 +14,30 @@ import {SubscriptionService} from "../../shared/services/SubscriptionService";
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.css']
 })
-export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ChartComponent implements OnInit, OnDestroy {
 
   public doughnutChartLabels: Label[] = [];
   public doughnutChartData: MultiDataSet = [
     []
   ];
+  public doughutColors: any[] = [];
+  public pieChartColors: Array <any> = [{
+    backgroundColor: []
+  }];
   public doughnutChartType: ChartType = 'doughnut';
-  //TODO better handling for loaded!
-  public loaded: boolean = false;
   private subscriptions: Subscription[] = [];
   private pLanguages: Planguage[] = [];
 
+
   constructor(private pLanguageService: PLanguageService,
               private analyticsService: AnalyticsService,
-              private subscriptionService: SubscriptionService) { }
+              private subscriptionService: SubscriptionService) {}
 
   ngOnDestroy(): void {
     this.subscriptionService.unsubscribeParam(this.subscriptions);
   }
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
     this.initData();
   }
 
@@ -50,15 +50,23 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
       }))
       .subscribe((data: UsageStatistics) => {
         this.initUsagePercentages(data);
-        this.loaded = true;
       });
     this.subscriptions.push(subscription);
   }
 
+  private visualizeChart(): void {
+    this.pieChartColors = [{backgroundColor: this.doughutColors}];
+  }
+
   private initUsagePercentages(statistics: UsageStatistics): void {
+    console.log(this.pieChartColors[0]);
     for(let i = 0; i < statistics.planguages.length; i++) {
       this.doughnutChartLabels.push(statistics.planguages[i].language);
       this.doughnutChartData[0].push(statistics.numberSubmissions[i]);
+      this.doughutColors.push(`${statistics.planguages[i].color}`);
     }
+
+    console.log(this.doughutColors);
+    this.visualizeChart();
   }
 }

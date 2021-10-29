@@ -4,21 +4,23 @@
   </div>
 
     <div class="card-body border rounded border-light shadow-sm" style="padding: 8px;background: #ffffff;">
-      <ng-container *ngFor="let language of this.pLanguages">
-        <div class="row g-0 align-items-center" style="margin-bottom: 4px;">
-          <div class="col-3">
-            <div class="text-dark fw-bold h5 mb-0 me-3"><span style="font-size: 15px;">{{language.language!}}</span></div>
-          </div>
-          <div class="col-9">
-            <div class="progress progress-sm">
-              <div [attr.id]="language.language.concat('percentageId')"
-                   class="progress-bar bg-info">
-                {{this.pLanguagePassPercentageMap.get(language.id!)}}%
+        <ng-container *ngFor="let language of this.pLanguages">
+          <div [attr.id]="language.language.concat('percentageElement')" class="invisible">
+            <div class="row g-0 align-items-center" style="margin-bottom: 4px;">
+              <div class="col-3">
+                <div class="text-dark fw-bold h5 mb-0 me-3"><span style="font-size: 15px;">{{language.language!}}</span></div>
+              </div>
+              <div class="col-9">
+                <div class="progress progress-sm">
+                  <div [attr.id]="language.language.concat('percentageId')"
+                       class="progress-bar bg-info">
+                    {{this.pLanguagePassPercentageMap.get(language.id!)}}%
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </ng-container>
+        </ng-container>
     </div>
 
 </div>

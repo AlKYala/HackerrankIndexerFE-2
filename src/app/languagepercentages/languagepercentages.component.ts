@@ -14,14 +14,14 @@ import {PassPercentages} from "../../shared/datamodels/Analytics/models/PassPerc
 })
 export class LanguagepercentagesComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  loaded: boolean = false;
   pLanguages: Planguage[] = [];
   private subscriptions: Subscription[] = [];
   pLanguagePassPercentageMap = new Map<number, number>();
 
   constructor(private analyticsService: AnalyticsService,
               private subscriptionService: SubscriptionService,
-              private pLanguageService: PLanguageService) { }
+              private pLanguageService: PLanguageService) {
+  }
 
   ngOnInit(): void {
   }
@@ -42,28 +42,25 @@ export class LanguagepercentagesComponent implements OnInit, AfterViewInit, OnDe
         return this.analyticsService.getPassPercentagesOfPLanguages();
       })).subscribe((data: PassPercentages) => {
         this.initPassPercentages(data);
-        this.loaded = true;
+
         this.visualizePassPercentages();
       });
     this.subscriptions.push(subscription);
   }
 
   private visualizePassPercentages(): void {
-    for(const language of this.pLanguages) {
-      console.log(`${language.language.concat('percentageId')}`);
-      console.log(document.getElementById(`${language.language.concat('percentageId')}`));
-      if(document.getElementById(`${language.language.concat('percentageId')}`) != null) {
-        const percentage = this.pLanguagePassPercentageMap.get(language.id!);
-        console.log(`${language.language} ${language.color}`);
-        console.log(percentage);
-        document.getElementById(`${language.language.concat('percentageId')}`)!.style.width = `${percentage}%`;
-        document.getElementById(`${language.language.concat('percentageId')}`)!.style.backgroundColor = `${language.color}`;
-      }
+    for (const language of this.pLanguages) {
+      const percentage = this.pLanguagePassPercentageMap.get(language.id!);
+      // @ts-ignore
+      document.getElementById(`${language.language.concat('percentageId')}`)!.style.width = `${percentage}%`;
+      document.getElementById(`${language.language.concat('percentageId')}`)!.style.backgroundColor = `${language.color}`;
+      // @ts-ignore
+      document.getElementById(`${language.language.concat('percentageElement')}`).className = "visible";
     }
   }
 
   private initPassPercentages(percentages: PassPercentages): void {
-    for(let i = 0; i < percentages.planguages.length; i++) {
+    for (let i = 0; i < percentages.planguages.length; i++) {
       const languageId = percentages.planguages[i].id;
       const percentagePass = percentages.percentages[i];
       this.pLanguagePassPercentageMap.set(languageId!, Math.round(percentagePass * 100));
