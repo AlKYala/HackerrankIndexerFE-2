@@ -83,7 +83,9 @@ export class DataanalyticsComponent implements OnInit {
   //method to disable
   public disableDataTabs(): void {
     this.activateTab(0);
-    for(let i = 0; i < this.numberOfTabs; i++) {
+    // @ts-ignore
+    document.getElementById(`tab-header-${0}`).className = "nav-link active";
+    for(let i = 1; i < this.numberOfTabs; i++) {
       // @ts-ignore
       document.getElementById(`tab-header-${i}`).className = "nav-link disabled";
     }
@@ -101,6 +103,10 @@ export class DataanalyticsComponent implements OnInit {
   }
 
   public activateTab(id: number): void {
+    //easiest strategy when other tabs 1-3 are disabled
+    if(!this.datafound) {
+      return;
+    }
     for(let i = 0; i < this.numberOfTabs; i++) {
       // @ts-ignore
       document.getElementById(`tab-${i}`).className = "tab-pane";

@@ -27,23 +27,13 @@ export class GeneralstatsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.checkUploadsExist();
+    this.initData();
   }
 
   private initData() {
     this.initChallengesPercentage();
     this.initSubmissionsPercentage();
     this.initFavouriteLanguage();
-  }
-
-  private checkUploadsExist(): void {
-    //TODO verschachtelung aufheben
-    this.analyticsService.checkUploadsExist().pipe().subscribe((data: boolean) => {
-      this.loaded = data;
-      if(this.loaded) {
-        this.initData();
-      }
-    });
   }
 
   private initSubmissionsPercentage(): void {
@@ -69,7 +59,7 @@ export class GeneralstatsComponent implements OnInit, AfterViewInit {
   }
 
 
-  private initFavouriteLanguage() {
+  private initFavouriteLanguage(): void {
     const subscription = this.analyticsService.getFavouritePLanguage().pipe().subscribe((data: Planguage) => {
       this.favouriteLanguage = data.language;
       console.log(this.favouriteLanguage);
