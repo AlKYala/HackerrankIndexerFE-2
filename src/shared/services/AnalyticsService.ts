@@ -45,7 +45,7 @@ export class AnalyticsService {
       .anyRequest(RequestServiceEnum.GET, `${this.path}/pLanguage/${languageId}/passed`) as Observable<number>;
   }
 
-  public getUsagePercentagesOfPLanguages(): Observable<UsageStatistics> {
+  public getUsageStatisticsOfPLanguages(): Observable<UsageStatistics> {
     //return this.httpClient.get(`${this.path}/pLanguage/percentages/usage`) as Observable<UsageStatistics>;
     return this.requestService
       .anyRequest(RequestServiceEnum.GET, `${this.path}/pLanguage/percentages/usage`) as Observable<UsageStatistics>;

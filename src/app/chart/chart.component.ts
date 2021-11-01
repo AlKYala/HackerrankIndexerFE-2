@@ -1,4 +1,12 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import {Label, MultiDataSet} from "ng2-charts";
 import {ChartType} from "chart.js";
 import {Subscription} from "rxjs";
@@ -8,6 +16,11 @@ import {Planguage} from "../../shared/datamodels/PLanguage/model/PLanguage";
 import {AnalyticsService} from "../../shared/services/AnalyticsService";
 import {UsageStatistics} from "../../shared/datamodels/Analytics/models/UsageStatistics";
 import {SubscriptionService} from "../../shared/services/SubscriptionService";
+
+
+/**
+ * TODO: FIND OUT WHY CHART ONLY LOADS AFTER REFRESH
+ */
 
 @Component({
   selector: 'app-chart',
@@ -26,12 +39,12 @@ export class ChartComponent implements OnInit, OnDestroy {
   }];
   public doughnutChartType: ChartType = 'doughnut';
   private subscriptions: Subscription[] = [];
-  private pLanguages: Planguage[] = [];
-
+  public loaded: boolean = false;
 
   constructor(private pLanguageService: PLanguageService,
               private analyticsService: AnalyticsService,
-              private subscriptionService: SubscriptionService) {}
+              private subscriptionService: SubscriptionService,
+              public changeDetector: ChangeDetectorRef) {}
 
   ngOnDestroy(): void {
     this.subscriptionService.unsubscribeParam(this.subscriptions);
@@ -45,28 +58,30 @@ export class ChartComponent implements OnInit, OnDestroy {
     const subscription: Subscription = this.pLanguageService
       .findAll()
       .pipe(switchMap((pLanguage: Planguage[]) => {
-        this.pLanguages = pLanguage;
-        return this.analyticsService.getUsagePercentagesOfPLanguages();
+        return this.analyticsService.getUsageStatisticsOfPLanguages();
       }))
       .subscribe((data: UsageStatistics) => {
-        this.initUsagePercentages(data);
+        this.initChart(data);
       });
     this.subscriptions.push(subscription);
   }
 
+  private initChart(statistics: UsageStatistics): void {
+    this.initUsagePercentages(statistics);
+    this.visualizeChart();
+    console.log("initialization done");
+  }
+
   private visualizeChart(): void {
     this.pieChartColors = [{backgroundColor: this.doughutColors}];
+    this.loaded = true;
   }
 
   private initUsagePercentages(statistics: UsageStatistics): void {
-    console.log(this.pieChartColors[0]);
     for(let i = 0; i < statistics.planguages.length; i++) {
       this.doughnutChartLabels.push(statistics.planguages[i].language);
       this.doughnutChartData[0].push(statistics.numberSubmissions[i]);
       this.doughutColors.push(`${statistics.planguages[i].color}`);
     }
-
-    console.log(this.doughutColors);
-    this.visualizeChart();
   }
 }

@@ -58,7 +58,6 @@ export class GeneralstatsComponent implements OnInit, AfterViewInit {
     this.subscriptions.push(subscription);
   }
 
-
   private initFavouriteLanguage(): void {
     const subscription = this.analyticsService.getFavouritePLanguage().pipe().subscribe((data: Planguage) => {
       this.favouriteLanguage = data.language;
@@ -74,6 +73,7 @@ export class GeneralstatsComponent implements OnInit, AfterViewInit {
   }
 
   private visualizePassedSubmissions() {
+    console.log(document.getElementById("passedSubmissionsPercent"));
     if(document.getElementById("passedSubmissionsPercent") != null) {
       document.getElementById("passedSubmissionsPercent")!.style.width = `${this.percentageSubmissionsPassed}%`;
     }

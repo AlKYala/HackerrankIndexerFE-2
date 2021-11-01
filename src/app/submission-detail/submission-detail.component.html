@@ -1,0 +1,102 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Dashboard - Brand</title>
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+  <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+  <div class="d-flex flex-column" id="content-wrapper">
+    <div id="content">
+      <nav class="navbar navbar-light navbar-expand-md bg-white shadow invisible mb-4 topbar static-top">
+        <div class="container-fluid"></div>
+      </nav>
+      <div class="container-fluid">
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+          <h3 class="text-dark mb-0">Submission Details</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50" style="margin: 2px;"></i>Download submission</a>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-xl-3 mb-4">
+            <div class="card shadow border-start-primary py-2">
+              <div class="card-body">
+                <div class="row align-items-center no-gutters">
+                  <div class="col me-2">
+                    <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="color: rgb(58,59,69);">ChALLENGE</span></div>
+                    <div class="text-dark fw-bold h5 mb-0"><a href="#">{{submission.challenge.challengeName}}</a></div>
+                  </div>
+                  <div class="col-auto"><i class="fas fa-trophy fa-2x text-gray-300"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3 mb-4">
+            <div class="card shadow border-start-success py-2">
+              <div class="card-body">
+                <div class="row align-items-center no-gutters">
+                  <div class="col me-2">
+                    <div class="text-uppercase text-success fw-bold text-xs mb-1"><span style="color: rgb(58,59,69);">Language</span></div>
+                    <div class="text-dark fw-bold h5 mb-0"><a href="#">{{submission.language.language}}</a></div>
+                  </div>
+                  <div class="col-auto"><i class="fas fa-code fa-2x text-gray-300"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3 mb-4">
+            <div class="card shadow border-start-info py-2">
+              <div class="card-body">
+                <div class="row align-items-center no-gutters">
+                  <div class="col me-2">
+                    <div class="text-uppercase text-info fw-bold text-xs mb-1"><span style="color: rgb(58,59,69);">ScOre</span></div>
+                    <div class="row g-0 align-items-center">
+                      <div class="col-auto">
+                        <div class="text-dark fw-bold h5 mb-0 me-3"><span>{{this.scoreInPercent}}%</span></div>
+                      </div>
+                      <div class="col">
+                        <div class="progress progress-sm">
+                          <div id="progress" class="progress-bar bg-info"><span class="visually-hidden">50%</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-auto"><i class="far fa-star fa-2x text-gray-300"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3 mb-4">
+            <div class="card shadow border-start-warning py-2">
+              <div class="card-body">
+                <div class="row align-items-center no-gutters">
+                  <div class="col me-2">
+                    <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span style="color: rgb(58,59,69);">Contest</span></div>
+                    <div class="text-dark fw-bold h5 mb-0"><a href="#">{{submission.contest.name}}</a></div>
+                  </div>
+                  <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-auto col-md-12 col-lg-7 col-xl-12 col-xxl-12">
+            <div class="card shadow mb-4">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h6 class="text-dark fw-bold m-0">Code</h6>
+              </div>
+              <div class="card-body"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/js/theme.js"></script>
+</body>

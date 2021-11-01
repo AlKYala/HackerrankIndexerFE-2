@@ -19,6 +19,7 @@ import { SubmissionlistComponent } from './submissionlist/submissionlist.compone
 import {JwPaginationModule} from "jw-angular-pagination";
 import {AnalyticsInsightComponent} from "./analytics-insight/analytics-insight.component";
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
+import { SubmissionDetailComponent } from './submission-detail/submission-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
     LanguagepercentagesComponent,
     SubmissionlistComponent,
     AnalyticsInsightComponent,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    SubmissionDetailComponent
   ],
   imports: [
     BrowserModule,
