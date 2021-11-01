@@ -2,7 +2,7 @@ export class NodeLoaderUtil {
 
   private static standardJsFiles: string[] = ["/assets/js/chart.min.js", "/assets/bootstrap/js/bootstrap.min.js","/assets/js/bs-init.js"];
   private static standardCssFiles: string[] = ["/assets/bootstrap/css/bootstrap.min.css", "/assets/fonts/fontawesome-all.min.css",
-    "/assets/css/Highlight-Clean.css", "/assets/css/styles.css"];
+    "/assets/css/Highlight-Clean.css", "/assets/css/styles.scss"];
 
   public static loadJsFile(url: string, document: Document): void {
     let node = document.createElement('script');

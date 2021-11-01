@@ -83,9 +83,12 @@ export class SubmissionDetailComponent implements OnInit {
   }
 
   private resolvePercentage(submission: Submission) {
-    console.log(submission.score);
-    const precision: number = (submission.score >= 0.1) ? 2 : 1;
-    this.scoreInPercent = parseInt((submission.score * 100).toPrecision(precision));
+    if(submission.score < 1) {
+      const precision: number = (submission.score >= 0.1) ? 2 : 1;
+      this.scoreInPercent = parseInt((submission.score * 100).toPrecision(precision));
+      return;
+    }
+    this.scoreInPercent = 100;
   }
 
   private adjustPercentage(): void {

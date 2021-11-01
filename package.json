@@ -26,6 +26,7 @@
     "ng2-charts": "^2.2.3",
     "ngx-codemirror": "^1.0.0",
     "ngx-float-button": "^1.0.0",
+    "ngx-highlightjs": "^5.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
