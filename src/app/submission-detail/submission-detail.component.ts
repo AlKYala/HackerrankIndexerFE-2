@@ -6,6 +6,8 @@ import {SubmissionDataService} from "../../shared/services/SubmissionDataService
 import {ActivatedRoute, Router} from "@angular/router";
 import {SubmissionDownloadService} from "../../shared/services/SubmissionDownloadService";
 import {Subscription} from "rxjs";
+import { HighlightResult } from 'ngx-highlightjs';
+
 
 @Component({
   selector: 'app-submission-detail',
@@ -58,6 +60,7 @@ export class SubmissionDetailComponent implements OnInit {
       this.submission = submission;
       console.log(submission);
       this.submissionCode = submission.code;
+      //console.log(submission.code.split("\n").length);
       this.resolvePercentage(submission);
       this.loaded = true;
       this.adjustPercentage();

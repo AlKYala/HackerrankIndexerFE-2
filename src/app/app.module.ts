@@ -20,7 +20,8 @@ import {JwPaginationModule} from "jw-angular-pagination";
 import {AnalyticsInsightComponent} from "./analytics-insight/analytics-insight.component";
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { SubmissionDetailComponent } from './submission-detail/submission-detail.component';
-import {HIGHLIGHT_OPTIONS, HighlightModule} from "ngx-highlightjs";
+import {HIGHLIGHT_OPTIONS, HighlightModule, HighlightOptions} from "ngx-highlightjs";
+import { CodeblockcomponentComponent } from './codeblockcomponent/codeblockcomponent.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {HIGHLIGHT_OPTIONS, HighlightModule} from "ngx-highlightjs";
     SubmissionlistComponent,
     AnalyticsInsightComponent,
     LoadingScreenComponent,
-    SubmissionDetailComponent
+    SubmissionDetailComponent,
+    CodeblockcomponentComponent
   ],
   imports: [
     BrowserModule,
@@ -46,11 +48,12 @@ import {HIGHLIGHT_OPTIONS, HighlightModule} from "ngx-highlightjs";
     ChartsModule,
     HttpClientModule,
     JwPaginationModule,
-    HighlightModule
+    HighlightModule,
+
   ],
   providers: [    {
     provide: HIGHLIGHT_OPTIONS,
-    useValue: {
+    useValue: <HighlightOptions>{
       fullLibraryLoader: () => import('highlight.js'),
     }
   }],
