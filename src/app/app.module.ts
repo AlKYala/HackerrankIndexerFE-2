@@ -22,6 +22,7 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
 import { SubmissionDetailComponent } from './submission-detail/submission-detail.component';
 import {HIGHLIGHT_OPTIONS, HighlightModule, HighlightOptions} from "ngx-highlightjs";
 import { CodeblockcomponentComponent } from './codeblockcomponent/codeblockcomponent.component';
+import { SubmissionfilterComponent } from './submissionfilter/submissionfilter.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CodeblockcomponentComponent } from './codeblockcomponent/codeblockcompo
     AnalyticsInsightComponent,
     LoadingScreenComponent,
     SubmissionDetailComponent,
-    CodeblockcomponentComponent
+    CodeblockcomponentComponent,
+    SubmissionfilterComponent
   ],
   imports: [
     BrowserModule,
