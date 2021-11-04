@@ -23,6 +23,7 @@ import { SubmissionDetailComponent } from './submission-detail/submission-detail
 import {HIGHLIGHT_OPTIONS, HighlightModule, HighlightOptions} from "ngx-highlightjs";
 import { CodeblockcomponentComponent } from './codeblockcomponent/codeblockcomponent.component';
 import { SubmissionfilterComponent } from './submissionfilter/submissionfilter.component';
+import {NgxChartsModule} from "@swimlane/ngx-charts";
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { SubmissionfilterComponent } from './submissionfilter/submissionfilter.c
     HttpClientModule,
     JwPaginationModule,
     HighlightModule,
-
+    NgxChartsModule
   ],
   providers: [    {
     provide: HIGHLIGHT_OPTIONS,

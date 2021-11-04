@@ -1,4 +1,4 @@
-  <div id="chart">
+<div id="chart">
     <div class="card shadow mb-4">
       <div class="card-header d-flex justify-content-between align-items-center">
         <h4 style="margin-bottom: 4px;margin-top: 4px;">Language use distribution</h4>
@@ -6,15 +6,18 @@
       <div class="card-body">
         <div class="chart-area">
           <div style="display: block;">
-            <canvas baseChart
+            <!--<canvas #chart baseChart
                     [data]="doughnutChartData"
                     [labels]="doughnutChartLabels"
                     [chartType]="doughnutChartType"
                     [colors]="pieChartColors">
-            </canvas>
+            </canvas>-->
+            <ngx-charts-pie-grid
+              [scheme]="doughutColors"
+              [results]="ngxChartData">
+            </ngx-charts-pie-grid>
           </div>
         </div>
       </div>
     </div>
   </div>
-
