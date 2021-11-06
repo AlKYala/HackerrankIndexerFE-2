@@ -24,6 +24,7 @@ import {HIGHLIGHT_OPTIONS, HighlightModule, HighlightOptions} from "ngx-highligh
 import { CodeblockcomponentComponent } from './codeblockcomponent/codeblockcomponent.component';
 import { SubmissionfilterComponent } from './submissionfilter/submissionfilter.component';
 import {NgxChartsModule} from "@swimlane/ngx-charts";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
     HttpClientModule,
     JwPaginationModule,
     HighlightModule,
-    NgxChartsModule
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [    {
     provide: HIGHLIGHT_OPTIONS,

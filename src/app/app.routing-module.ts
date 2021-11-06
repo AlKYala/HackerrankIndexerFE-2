@@ -3,9 +3,11 @@ import {DummyComponentComponent} from "./dummy-component/dummy-component.compone
 import {NgModule} from "@angular/core";
 import {LandingPageComponent} from "./landing-page/landing-page.component";
 import {SubmissionDetailComponent} from "./submission-detail/submission-detail.component";
+import {LanguagepercentagesComponent} from "./languagepercentages/languagepercentages.component";
 
 const routes: Routes = [
   {path: 'submission/:id', component: SubmissionDetailComponent},
+  {path: 'debug', component: LanguagepercentagesComponent},
   {path: '', component: LandingPageComponent}
 ];
 
