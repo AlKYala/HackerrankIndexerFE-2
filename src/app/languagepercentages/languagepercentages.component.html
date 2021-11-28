@@ -3,8 +3,8 @@
     <h4 style="margin-bottom: 4px;margin-top: 4px;">Pass rate per language</h4>
   </div>
 
-    <div class="card-body border rounded border-light shadow-sm" style="padding: 8px;background: #ffffff;">
-        <ng-container *ngFor="let language of this.pLanguages">
+    <div class="card-body border rounded border-light shadow-sm p-1" style="padding: 8px;background: #ffffff;">
+    <!--    <ng-container *ngFor="let language of this.pLanguages">
           <div [attr.id]="language.language.concat('percentageElement')" class="invisible">
             <div class="row g-0 align-items-center" style="margin-bottom: 4px;">
               <div class="col-3">
@@ -21,7 +21,18 @@
             </div>
           </div>
         </ng-container>
-    </div>
-
+    </div>-->
+      <ngx-charts-bar-horizontal-normalized
+        [results]="chartData"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [scheme]="colorScheme"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [legendPosition]="legendPosition"
+        [yAxisLabel]="yAxisLabel">
+      </ngx-charts-bar-horizontal-normalized>
 </div>
 

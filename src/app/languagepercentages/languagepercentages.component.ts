@@ -1,11 +1,14 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {AnalyticsService} from "../../shared/services/AnalyticsService";
 import {SubscriptionService} from "../../shared/services/SubscriptionService";
-import {PLanguageService} from "../../shared/datamodels/PLanguage/service/PLanguageService";
 import {Subscription} from "rxjs";
-import {switchMap} from "rxjs/operators";
 import {Planguage} from "../../shared/datamodels/PLanguage/model/PLanguage";
 import {PassPercentages} from "../../shared/datamodels/Analytics/models/PassPercentages";
+import {PassData} from "../../shared/datamodels/Analytics/models/PassData";
+import {RequestService} from "../../shared/services/ServiceHandler/RequestService";
+import {RequestServiceEnum} from "../../shared/services/ServiceHandler/RequestServiceEnum";
+import {environment} from "../../environments/environment";
+import {Color, LegendPosition, ScaleType} from "@swimlane/ngx-charts";
 
 @Component({
   selector: 'app-languagepercentages',
@@ -18,9 +21,26 @@ export class LanguagepercentagesComponent implements OnInit, AfterViewInit, OnDe
   private subscriptions: Subscription[] = [];
   pLanguagePassPercentageMap = new Map<number, number>();
 
+  passData!: PassData[];
+  chartData: any[] = [];
+  gradient = false;
+  showXAxis = true;
+  showYAxis = true;
+  showLegend = true;
+  showXAxisLabel = false;
+  showYAxisLabel = false;
+  yAxisLabel: string = 'Languages';
+  legendPosition: LegendPosition = LegendPosition.Below;
+  colorScheme: Color = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'],
+    name: 'colors',
+    selectable: true,
+    group: ScaleType.Linear
+  };
+
   constructor(private analyticsService: AnalyticsService,
               private subscriptionService: SubscriptionService,
-              private pLanguageService: PLanguageService) {
+              private requestService: RequestService) {
   }
 
   ngOnInit(): void {
@@ -34,6 +54,7 @@ export class LanguagepercentagesComponent implements OnInit, AfterViewInit, OnDe
     this.subscriptionService.unsubscribeParam(this.subscriptions);
   }
 
+  /* Deprecated
   private initData(): void {
     console.log("init");
     const subscription: Subscription = this.pLanguageService.findAll()
@@ -46,7 +67,14 @@ export class LanguagepercentagesComponent implements OnInit, AfterViewInit, OnDe
         this.visualizePassPercentages();
       });
     this.subscriptions.push(subscription);
+  }*/
+
+  private initData(): void {
+    this.requestService.anyRequest(RequestServiceEnum.GET, `${environment.api}/analytics/passData/all`).pipe().subscribe((data) => {
+      this.chartData = data;
+    });
   }
+
 
   private visualizePassPercentages(): void {
     for (const language of this.pLanguages) {
@@ -66,5 +94,4 @@ export class LanguagepercentagesComponent implements OnInit, AfterViewInit, OnDe
       this.pLanguagePassPercentageMap.set(languageId!, Math.round(percentagePass * 100));
     }
   }
-
 }

@@ -22,6 +22,9 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
 import { SubmissionDetailComponent } from './submission-detail/submission-detail.component';
 import {HIGHLIGHT_OPTIONS, HighlightModule, HighlightOptions} from "ngx-highlightjs";
 import { CodeblockcomponentComponent } from './codeblockcomponent/codeblockcomponent.component';
+import { SubmissionfilterComponent } from './submissionfilter/submissionfilter.component';
+import {NgxChartsModule} from "@swimlane/ngx-charts";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { CodeblockcomponentComponent } from './codeblockcomponent/codeblockcompo
     AnalyticsInsightComponent,
     LoadingScreenComponent,
     SubmissionDetailComponent,
-    CodeblockcomponentComponent
+    CodeblockcomponentComponent,
+    SubmissionfilterComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,8 @@ import { CodeblockcomponentComponent } from './codeblockcomponent/codeblockcompo
     HttpClientModule,
     JwPaginationModule,
     HighlightModule,
-
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [    {
     provide: HIGHLIGHT_OPTIONS,

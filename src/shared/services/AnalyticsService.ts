@@ -5,9 +5,9 @@ import {Observable} from "rxjs";
 import {UsageStatistics} from "../datamodels/Analytics/models/UsageStatistics";
 import {Planguage} from "../datamodels/PLanguage/model/PLanguage";
 import {PassPercentages} from "../datamodels/Analytics/models/PassPercentages";
-import {ServiceHandler} from "./ServiceHandler/ServiceHandler";
 import {RequestServiceEnum} from "./ServiceHandler/RequestServiceEnum";
 import {RequestService} from "./ServiceHandler/RequestService";
+import {PassData} from "../datamodels/Analytics/models/PassData";
 
 //TODO bei bedarf die endpunkte anpassen!!!
 
@@ -67,5 +67,17 @@ export class AnalyticsService {
     //return this.httpClient.get(`${this.path}/exists`) as Observable<boolean>;
     return this.requestService
       .anyRequest(RequestServiceEnum.GET, `${this.path}/exists`) as Observable<boolean>;
+  }
+
+  public getPassDataForLanguage(id: number): Observable<PassData> {
+    return this.requestService.anyRequest(RequestServiceEnum.GET,`${this.path}/passData/${id}`) as Observable<PassData>;
+  }
+
+  public getUsageStatisticsList(): Observable<any>{
+    return this.requestService.anyRequest(RequestServiceEnum.GET, `${this.path}/usageData/all`);
+  }
+
+  public getAnalyticsColors(): Observable<string[]> {
+    return this.requestService.anyRequest(RequestServiceEnum.GET, `${this.path}/colors`);
   }
 }

@@ -1,0 +1,6 @@
+#chart-card {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: visible !important;
+  padding-bottom: 10px;
+}
